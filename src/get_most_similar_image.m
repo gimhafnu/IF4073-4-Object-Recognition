@@ -31,19 +31,19 @@ function [char, similarity] = get_most_similar_image(image, method)
     %image_skeleton = bwmorph(image_skeleton,'spur',Inf);
 
     
-    if not(isfolder("..\image\templates\temp_"))
-        mkdir ..\image\templates\temp_
+    if not(isfolder("..\image\temporary\temp_"))
+        mkdir ..\image\temporary\temp_
     end
     cnt_num = 0;
     cnt_num_helper = false;
     while ~cnt_num_helper
-        if isfile("..\image\templates\temp_\main_bw" + cnt_num + ".png")
+        if isfile("..\image\temporary\temp_\main_bw" + cnt_num + ".png")
             cnt_num = cnt_num + 1;
         else
             cnt_num_helper = true;
         end
     end
-    imwrite(image_skeleton, "..\image\templates\temp_\main_bw" + cnt_num + ".png");
+    imwrite(image_skeleton, "..\image\temporary\temp_\main_bw" + cnt_num + ".png");
 
     temp_bak = [];
     
@@ -89,7 +89,7 @@ function [char, similarity] = get_most_similar_image(image, method)
         end
 
         temp_bak = [temp_bak, [fonts(i), sim_with_current]];
-        imwrite(I_BW_skel, "..\image\templates\temp_\" + fonts(i) + "_bw" + ".png");
+        imwrite(I_BW_skel, "..\image\temporary\temp_\" + fonts(i) + "_bw" + ".png");
     end
 
     disp(temp_bak);

@@ -80,22 +80,23 @@ function [list_of_files] = segment_image(image, folder, file_name, num_suffix)
             continue
         end
         %np_pre = [minpadsize floor(hpad)];
-        np = padarray(nr,[minpadsize floor(hpad)],0,'pre'); 
-        np = padarray(np,[minpadsize ceil(hpad)],0,'post');
+        %np = padarray(nr,[minpadsize floor(hpad)],0,'pre'); 
+        %np = padarray(np,[minpadsize ceil(hpad)],0,'post');
         %np = imgaussfilt(double(np),1);
-        %n1 = imresize(n1,[128 128]);
-        %n1 = imgaussfilt(double(n1),1);
-        %n1 = padarray(imresize(n1,[20 20],'bicubic'),[4 4],0,'both'); 
 
+        n1 = imresize(n1,outsize);
+        n1 = imgaussfilt(double(n1),1);
+        n1 = padarray(imresize(n1,[20 20],'bicubic'),[4 4],0,'both'); 
+        np = n1;
 
-        np_old = np;
-        [nx,ny] = size(np_old) ;
-        [y,x] = find(np_old(:,:,1)==1) ;
-        np = zeros(nx,ny) ;
-        [X,Y] = meshgrid(1:ny,1:nx) ;
-        idx = boundary(x,y) ;
-        idx = inpolygon(X(:),Y(:),x(idx),y(idx)) ;
-        np(idx) = 1 ;
+        %np_old = np;
+        %[nx,ny] = size(np_old) ;
+        %[y,x] = find(np_old(:,:,1)==1) ;
+        %np = zeros(nx,ny) ;
+        %[X,Y] = meshgrid(1:ny,1:nx) ;
+        %idx = boundary(x,y) ;
+        %idx = inpolygon(X(:),Y(:),x(idx),y(idx)) ;
+        %np(idx) = 1 ;
 
         
         

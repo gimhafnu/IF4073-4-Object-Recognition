@@ -1,9 +1,9 @@
-I = imread("..\image\plate_1_.jpg");
-if (isfolder("..\image\templates\temp_segmented"))
-    rmdir ..\image\templates\temp_segmented s;
+I = imread("..\image\Picture2.png");
+if (isfolder("..\image\temporary\temp_segmented"))
+    rmdir ..\image\temporary\temp_segmented s;
 end
 
-[seg_files] = segment_image(I,"..\image\templates\temp_segmented");
+[seg_files] = segment_image(I,"..\image\temporary\temp_segmented");
 disp(seg_files)
 
 fonts_folder = "..\image\templates\fonts\";
@@ -22,7 +22,7 @@ for i=1:size(fonts,2)
     %figure, imshow(I_BW_skel);
 end
 
-segs_folder = '..\image\templates\temp_segmented';
+segs_folder = '..\image\temporary\temp_segmented';
 % Get a list of all files in the folder with the desired file name pattern.
 filePattern = fullfile(segs_folder, '*.png'); 
 theFiles = dir(filePattern);
@@ -32,8 +32,8 @@ detect_method = "skeleton";
 detect_method = "template";
 detect_method = "both";
 
-if (isfolder("..\image\templates\temp_"))
-        rmdir ..\image\templates\temp_ s;
+if (isfolder("..\image\temporary\temp_"))
+        rmdir ..\image\temporary\temp_ s;
 end
 
 for i=1:size(theFiles,1)
