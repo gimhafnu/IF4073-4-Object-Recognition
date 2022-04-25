@@ -45,7 +45,7 @@ function [list_of_files] = segment_image(image, folder, file_name, num_suffix)
     
     % Tries to clean smaller "areas" from the image
     % This should delete the expiration date
-    I_bin_clean =  bwareaopen(I_bin_clean, round(I_size(1) * I_size(2) / 160));
+    I_bin_clean =  bwareaopen(I_bin_clean, round(I_size(1) * I_size(2) / 180));
     %I_bin_clean =  bwareaopen(I_bin_clean, 128);
     
     %figure, imshow(I_bin_clean);
@@ -84,6 +84,8 @@ function [list_of_files] = segment_image(image, folder, file_name, num_suffix)
         % Ignores area if it's... long
         % More or less the aspect ratio of the actual plate
         if n1_size(2) / n1_size(1) > 2.4
+            %figure, imshow(n1);
+            %disp("Skipping");
             continue
         end
 
@@ -109,6 +111,7 @@ function [list_of_files] = segment_image(image, folder, file_name, num_suffix)
         end
         imwrite(np, segmentedImages1);
         seg_file_list = [seg_file_list, segmentedImages1];
+        %disp(seg_file_list);
         %pause(1)
     end
 

@@ -8,12 +8,6 @@ function detecteds = detect_plate(I)
     [seg_files] = segment_image(I,"..\image\temporary\temp_segmented");
     %disp(seg_files)
     
-    % Readies a list of files to be compared (the segmented images from the
-    % plate number
-    segs_folder = '..\image\temporary\temp_segmented';
-    
-    filePattern = fullfile(segs_folder, '*.png'); 
-    theFiles = dir(filePattern);
     
     detected = "";
     detect_method = "skeleton";
@@ -27,8 +21,8 @@ function detecteds = detect_plate(I)
     
     % Reads each segmented char and then try to find the most similar character
     % from the "fonts"
-    for i=1:size(theFiles,1)
-        file_path = fullfile(theFiles(i).folder, theFiles(i).name);
+    for i=1:size(seg_files,2)
+        file_path = seg_files(i);
         %disp(file_path);
         %disp("  --- ");
         I = imread(file_path);
@@ -43,6 +37,6 @@ function detecteds = detect_plate(I)
     end
     
     % Outputs the detected files
-    disp("Detected : "), disp(detected);
+    %disp("Detected : "), disp(detected);
     detecteds = detected;
 end
