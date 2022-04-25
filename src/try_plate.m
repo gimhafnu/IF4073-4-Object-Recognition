@@ -1,4 +1,4 @@
-I = imread("..\image\plate_1_.jpg"); % The plate number image
+I = imread("..\image\image5.jpg"); % The plate number image
 
 % Readies folder for segmented characters from the plate number image
 if (isfolder("..\image\temporary\temp_segmented"))
@@ -56,6 +56,7 @@ for i=1:size(theFiles,1)
     %disp(file_path);
     %disp("  --- ");
     I = imread(file_path);
+    
     % Do the actual comparisons here
     [char, similarity] = get_most_similar_image(I, detect_method);
     %disp("char : " + char);
