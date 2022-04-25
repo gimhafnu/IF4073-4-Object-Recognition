@@ -1,6 +1,5 @@
 function text = readplate(image, type)
     load imgfildata;
-    % [~, Y] = size(image);
     image = imresize(image,[300 500]);
     
     if size(image,3)==3
@@ -25,12 +24,9 @@ function text = readplate(image, type)
         A = 500; B = 75;
     end
 
-%     figure,imshow(image);
     image1=bwareaopen(image,A);
-%     figure,imshow(image1);
     image2 = image-image1;
     image2 = bwareaopen(image2, B);
-%     figure,imshow(image2);
     
     [L,Net]=bwlabel(image2);
     propied=regionprops(L,'BoundingBox');
@@ -47,7 +43,6 @@ function text = readplate(image, type)
       [r,c] = find(L==n);
       n1=image(min(r):max(r),min(c):max(c));
       n1=imresize(n1,[42,24]);
-%       imshow(n1)
       pause(0.2)
       x=[ ];
       
