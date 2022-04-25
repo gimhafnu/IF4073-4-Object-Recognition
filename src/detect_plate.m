@@ -1,4 +1,4 @@
-function detecteds = detect_plate(I)
+function detecteds = detect_plate(I, detect_method)
     % Readies folder for segmented characters from the plate number image
     if (isfolder("..\image\temporary\temp_segmented"))
         rmdir ..\image\temporary\temp_segmented s;
@@ -10,9 +10,9 @@ function detecteds = detect_plate(I)
     
     
     detected = "";
-    detect_method = "skeleton";
-    detect_method = "template";
-    detect_method = "both";
+%     detect_method = "skeleton";
+%     detect_method = "template";
+%     detect_method = "both";
     
     % Readies folder to save skeletons (mostly for debugging)
     if (isfolder("..\image\temporary\temp_"))

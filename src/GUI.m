@@ -124,21 +124,30 @@ function skeleton_Callback(hObject, eventdata, handles)
 % hObject    handle to skeleton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+image = getappdata(0, 'image1');
+fonts = readyfont();
+detected = detect_plate(image, "skeleton");
+set(handles.hasil, 'String', detected);
 
 % --- Executes on button press in template.
 function template_Callback(hObject, eventdata, handles)
 % hObject    handle to template (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+image = getappdata(0, 'image1');
+fonts = readyfont();
+detected = detect_plate(image, "template");
+set(handles.hasil, 'String', detected);
 
 % --- Executes on button press in both.
 function both_Callback(hObject, eventdata, handles)
 % hObject    handle to both (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+image = getappdata(0, 'image1');
+fonts = readyfont();
+detected = detect_plate(image, "both");
+set(handles.hasil, 'String', detected);
 
 % --- Executes on button press in fullplate.
 function fullplate_Callback(hObject, eventdata, handles)
